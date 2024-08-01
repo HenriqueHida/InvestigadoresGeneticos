@@ -14,7 +14,7 @@ Os EIM representam cerca de 10% de todas as doenças genéticas. Até hoje, muit
 
 Os EIM são geralmente multissistêmicos, ou seja, afetam vários tecidos diferentes do corpo pois tratam de substâncias essenciais para o metabolismo de diversas células. Muitos evoluem para o comprometimento neurológico e óbito precoce, muitos morrem antes da adolescência. O diagnóstico dos EIM é complexo, necessitando várias etapas de investigação.
 
-![imagem1](./Assets/imagem1.jpeg)
+![imagem1](./assets/images/imagem1.jpeg)
 
 ## Quais são os grupos?
 
@@ -28,7 +28,7 @@ Bom, existem mais de 550 doenças descritas, sendo a incidência do seu conjunto
 
 **C. Grupo III:** deficiência na síntese ou catabolismo de moléculas complexas, incluindo doenças de depósito lisossômico e dos peroxissomos, dos lipídeos, dos ácidos biliares, das vitaminas, do transporte de metais entre outras. Esse grupo é caracterizado por sinais e sintomas permanentes e progressivos sem relação com ingestão alimentar. Ex: doenças lisossomiais, (como as mucopolissacaridoses e as esfingolipidoses) e as doenças peroxissomiais.
 
-![imagem2](./Assets/imagem2.jpeg)
+![imagem2](./assets/images/imagem2.jpeg)
 
 ### Classificação Husny e Fernandes-Caldato
 
@@ -54,7 +54,7 @@ O diagnóstico de alguns EIM pode ser feito por testes no período neonatal. No 
 
 Mas eu disse lá em cima que existem vários processos de investigação para chegar no diagnóstico de uma EIM. Quais são eles? Abaixo tem um fluxograma que resume o protocolo de diagnóstico dos EIM ofertado pelo SUS.
 
-![imagem3](./Assets/imagem3.jpeg)
+![imagem3](./assets/images/imagem3.jpeg)
 
 ## Fluxograma de Diagnóstico dos EIM
 

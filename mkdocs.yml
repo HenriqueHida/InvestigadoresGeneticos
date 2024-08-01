@@ -2,8 +2,8 @@ site_name: Aquele nome lá
 theme:
   name: material
   language: pt-BR
-  logo: docs/assets/images/logo.png
-  favicon: docs/assets/images/logo.png
+  logo: assets/images/logo.png
+  favicon: assets/images/logo.png
   palette:
     - scheme: default
       primary: black
