@@ -2,8 +2,8 @@ site_name: Aquele nome lá
 theme:
   name: material
   language: pt-BR
-  logo: ../Assets/logo.png
-  favicon: ../Assets/logo.png
+  logo: docs/assets/images/logo.png
+  favicon: docs/assets/images/logo.png
   palette:
     - scheme: default
       primary: black
@@ -44,10 +44,10 @@ nav:
 extra_javascript:
   - https://cdn.tiny.cloud/1/2jt1cuik6ds2i08040n9c4c4igidhw9artwxbhb5q1m7e4bo/tinymce/5/tinymce.min.js  # TinyMCE script with API key
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js  # Font Awesome for icons
-  - scripts/script.js  # Wordle game script
-  - scripts/editor.js  # TinyMCE initialization script
-  - scripts/editor-button.js # TinyMCE custom button script
+  - assets/js/script.js  # Wordle game script
+  - assets/js/editor.js  # TinyMCE initialization script
+  - assets/js/editor-button.js # TinyMCE custom button script
 
 extra_css:
-  - css/styles.css  # Custom CSS for the Wordle game
+  - assets/css/styles.css  # Custom CSS for the Wordle game
   
