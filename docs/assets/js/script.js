@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Example target codons for different sequences
     const targetCodons = ['CGC', 'CCT', 'CGG', 'ATC', 'CGA', 'AAC', 'GCA', 'GGC', 'CAA'];
     const maxAttempts = 6;
     const codonLength = 3;
