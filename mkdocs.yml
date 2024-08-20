@@ -47,6 +47,7 @@ extra_javascript:
   - assets/js/script.js  # Wordle game script
   - assets/js/editor.js  # TinyMCE initialization script
   - assets/js/editor-button.js # TinyMCE custom button script
+  - assets/js/firebase.js  # Firebase script for Wordle game
 
 extra_css:
   - assets/css/styles.css  # Custom CSS for the Wordle game

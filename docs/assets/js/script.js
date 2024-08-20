@@ -100,9 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
         attempts++;
 
         if (JSON.stringify(guess) === JSON.stringify(targetCodons)) {
-            message.textContent = 'Congratulations! You guessed the sequence correctly!';
+            message.textContent = 'Parabéns! Você acertou a sequência!';
         } else if (attempts === maxAttempts) {
-            message.textContent = 'Game over! The correct codons were: ' + targetCodons.join(', ');
+            message.textContent = 'Fim de jogo! Os codos corretos são: ' + targetCodons.join(', ');
         }
     });
 });
