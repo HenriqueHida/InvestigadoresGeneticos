@@ -44,6 +44,9 @@ nav:
 extra_javascript:
   - https://cdn.tiny.cloud/1/2jt1cuik6ds2i08040n9c4c4igidhw9artwxbhb5q1m7e4bo/tinymce/5/tinymce.min.js  # TinyMCE script with API key
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js  # Font Awesome for icons
+  - https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js  # Firebase script
+  - https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js  # Firestore script
+  - https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js  # Auth script
   - assets/js/script.js  # Wordle game script
   - assets/js/editor.js  # TinyMCE initialization script
   - assets/js/editor-button.js # TinyMCE custom button script

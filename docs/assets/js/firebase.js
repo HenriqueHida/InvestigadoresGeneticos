@@ -1,7 +1,8 @@
-// Firebase setup
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
+// Firebase setup (no import/export statements)
 const firebaseConfig = {
   apiKey: "AIzaSyCnx-VGjSYMaf9w-QEca2x6eSZhh2WXPUA",
   authDomain: "wordle-12568.firebaseapp.com",
@@ -13,19 +14,22 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
+
+firebase.initializeApp(firebaseConfig);
 
 // Function to show and hide popups
 window.openPopup = function(popupId) {
-    document.getElementById(popupId).style.display = 'block';
+  document.getElementById(popupId).style.display = 'block';
 }
 
 window.closePopup = function(popupId) {
-    document.getElementById(popupId).style.display = 'none';
+  document.getElementById(popupId).style.display = 'none';
 }
 
 // Function to show user info after login or register
 function showUserInfo(user) {
-    document.getElementById('user-name-display').innerText = `Logado como: ${user.displayName || "Usuário"}`;
+  document.getElementById('user-name-display').innerText = `Logado como: ${user.displayName || "Usuário"}`;
 }
 
 // Function to log in the user
@@ -33,17 +37,17 @@ window.login = function() {
   const email = document.getElementById('login-email').value;
   const password = document.getElementById('login-password').value;
 
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      alert('Login realizado com sucesso!');
-      document.getElementById('user-name-display').innerText = user.displayName || "Usuário";
-      closePopup('login-popup');
-      openPopup('logout-popup');
-    })
-    .catch((error) => {
-      alert(error.message);
-    });
+  auth.signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+          const user = userCredential.user;
+          alert('Login realizado com sucesso!');
+          document.getElementById('user-name-display').innerText = user.displayName || "Usuário";
+          closePopup('login-popup');
+          openPopup('logout-popup');
+      })
+      .catch((error) => {
+          alert(error.message);
+      });
 }
 
 // Function to register the user
@@ -52,27 +56,27 @@ window.register = function() {
   const email = document.getElementById('register-email').value;
   const password = document.getElementById('register-password').value;
 
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      updateProfile(user, { displayName: name }).then(() => {
-        alert('Registro realizado com sucesso!');
-        document.getElementById('user-name-display').innerText = name;
-        closePopup('register-popup');
-        openPopup('logout-popup');
+  auth.createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+          const user = userCredential.user;
+          user.updateProfile({ displayName: name }).then(() => {
+              alert('Registro realizado com sucesso!');
+              document.getElementById('user-name-display').innerText = name;
+              closePopup('register-popup');
+              openPopup('logout-popup');
+          });
+      })
+      .catch((error) => {
+          alert(error.message);
       });
-    })
-    .catch((error) => {
-      alert(error.message);
-    });
 }
 
 // Function to log out the user
 window.logout = function() {
-  signOut(auth).then(() => {
-    alert('Logout realizado com sucesso!');
-    closePopup('logout-popup');
+  auth.signOut().then(() => {
+      alert('Logout realizado com sucesso!');
+      closePopup('logout-popup');
   }).catch((error) => {
-    alert(error.message);
+      alert(error.message);
   });
 }

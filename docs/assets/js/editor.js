@@ -1,49 +1,128 @@
-import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+// editor.js
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
-const db = getFirestore();
 const auth = getAuth();
+const db = getFirestore();
 
+// Your firebase related code
+
+// Ensure this script is loaded after firebase.js
 document.addEventListener('DOMContentLoaded', () => {
-    const toggleEditorBtn = document.getElementById('toggle-editor-btn');
-    const editorContainer = document.getElementById('editor-container');
-    let editorActive = false;
+    const auth = firebase.auth(); // Use global firebase object
+    const db = firebase.firestore(); // Use global firebase object
 
+    const toggleEditorBtn = document.createElement('button');
+    toggleEditorBtn.id = 'toggle-editor-btn';
+    toggleEditorBtn.className = 'editor-button';
+    toggleEditorBtn.innerHTML = '<i class="fas fa-edit"></i>';
+    document.body.appendChild(toggleEditorBtn);
+
+    const editorContainer = document.createElement('div');
+    editorContainer.id = 'editor-container';
+    editorContainer.style.display = 'none';
+    editorContainer.innerHTML = '<textarea id="editor" placeholder="Start typing..."></textarea>';
+    document.body.appendChild(editorContainer);
+
+    let editorInitialized = false;
+    let autoSaveInterval;
+    let lastSavedContent = '';
+    let currentUser = null;
+
+    // Listen for authentication state changes
+    auth.onAuthStateChanged((user) => {
+        currentUser = user;
+        if (!user && editorInitialized) {
+            tinymce.remove('#editor');
+            editorContainer.style.display = 'none';
+            editorInitialized = false;
+            alert('You have been signed out. Please log in to continue editing.');
+        }
+    });
+
+    // Toggle editor visibility and initialize TinyMCE
     toggleEditorBtn.addEventListener('click', async () => {
-        const user = auth.currentUser;
-        if (!user) {
-            alert('Por favor, faça login para usar o editor.');
+        if (!currentUser) {
+            alert('Please log in to use the editor.');
             return;
         }
 
-        const docRef = doc(db, "users", user.uid);
-        if (editorActive) {
-            const editorContent = tinymce.get('editor').getContent();
-            await setDoc(docRef, { content: editorContent }, { merge: true });
+        if (editorInitialized) {
+            const content = tinymce.get('editor').getContent();
+            await saveContent(currentUser.uid, content);
+            clearInterval(autoSaveInterval);
             tinymce.remove('#editor');
-            toggleEditorBtn.textContent = 'Open Editor';
             editorContainer.style.display = 'none';
+            editorInitialized = false;
         } else {
-            tinymce.init({
-                selector: '#editor',
-                plugins: 'autosave save',
-                toolbar: 'save | undo redo | formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | outdent indent | bullist numlist',
-                autosave_ask_before_unload: true,
-                setup: function (editor) {
-                    editor.on('SaveContent', async function (e) {
-                        await setDoc(docRef, { content: e.content }, { merge: true });
-                    });
-                },
-                init_instance_callback: async function (editor) {
-                    const docSnap = await getDoc(docRef);
-                    if (docSnap.exists()) {
-                        editor.setContent(docSnap.data().content);
-                    }
-                }
-            });
-            toggleEditorBtn.textContent = 'Save & Minimize Editor';
             editorContainer.style.display = 'block';
+            await initializeEditor(currentUser.uid);
+            editorInitialized = true;
         }
-        editorActive = !editorActive;
     });
+
+    // Initialize TinyMCE editor and load existing content
+    async function initializeEditor(userId) {
+        tinymce.init({
+            selector: '#editor',
+            plugins: 'autosave save lists link',
+            toolbar: 'save | undo redo | bold italic underline | bullist numlist | link',
+            setup: (editor) => {
+                editor.on('change', () => {
+                    const content = editor.getContent();
+                    if (content !== lastSavedContent) {
+                        resetAutoSave(userId, content);
+                    }
+                });
+            },
+            init_instance_callback: async (editor) => {
+                const content = await loadContent(userId);
+                if (content) {
+                    editor.setContent(content);
+                    lastSavedContent = content;
+                }
+                startAutoSave(userId);
+            },
+        });
+    }
+
+    // Save editor content to Firestore
+    async function saveContent(userId, content) {
+        try {
+            await db.collection('users').doc(userId).set({ editorContent: content }, { merge: true });
+            lastSavedContent = content;
+            console.log('Content saved successfully.');
+        } catch (error) {
+            console.error('Error saving content:', error);
+        }
+    }
+
+    // Load editor content from Firestore
+    async function loadContent(userId) {
+        try {
+            const docSnap = await db.collection('users').doc(userId).get();
+            if (docSnap.exists()) {
+                return docSnap.data().editorContent || '';
+            }
+        } catch (error) {
+            console.error('Error loading content:', error);
+        }
+        return '';
+    }
+
+    // Start auto-save functionality
+    function startAutoSave(userId) {
+        autoSaveInterval = setInterval(async () => {
+            const content = tinymce.get('editor').getContent();
+            if (content !== lastSavedContent) {
+                await saveContent(userId, content);
+            }
+        }, 10000); // Auto-save every 10 seconds
+    }
+
+    // Reset auto-save interval
+    function resetAutoSave(userId, content) {
+        clearInterval(autoSaveInterval);
+        startAutoSave(userId);
+    }
 });
