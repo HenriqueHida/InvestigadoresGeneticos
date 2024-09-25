@@ -12,7 +12,6 @@
     <script src="https://cdn.tiny.cloud/1/2jt1cuik6ds2i08040n9c4c4igidhw9artwxbhb5q1m7e4bo/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
     <script src="assets/js/script.js"></script>
-    <script src="assets/js/editor.js"></script>
     <script src="assets/js/editor-button.js"></script>
 </head>
 <body id="bodyJogo">
@@ -27,45 +26,15 @@
         <div class="center"><button id="submit-button">ENVIAR</button></div>
         <div id="message"></div>
     </div>
-    <div id="login-popup" class="popup">
-        <div class="popup-content">
-            <span class="close-btn" onclick="closePopup('login-popup')">&times;</span>
-            <h2>Login</h2>
-            <input type="email" id="login-email" placeholder="Email">
-            <input type="password" id="login-password" placeholder="Senha">
-            <button onclick="login()">Login</button>
-        </div>
-    </div>
     
-    <div id="register-popup" class="popup">
-        <div class="popup-content">
-            <span class="close-btn" onclick="closePopup('register-popup')">&times;</span>
-            <h2>Registrar</h2>
-            <input type="text" id="register-name" placeholder="Nome">
-            <input type="email" id="register-email" placeholder="Email">
-            <input type="password" id="register-password" placeholder="Senha">
-            <button onclick="register()">Registrar</button>
-        </div>
-    </div>
     
-    <div id="logout-popup" class="popup">
-        <div class="popup-content">
-            <span class="close-btn" onclick="closePopup('logout-popup')">&times;</span>
-            <h2>Logout</h2>
-            <p>Você está logado como <span id="user-name-display"></span>.</p>
-            <button onclick="logout()">Logout</button>
-        </div>
-    </div>
-    
-    <!-- Botões para abrir os popups -->
-    <button onclick="openPopup('login-popup')">Login</button>
-    <button onclick="openPopup('register-popup')">Registrar</button>
-    
-    <!-- TinyMCE Section -->
-    <button id="toggle-editor-btn" class="editor-button"><i class="fas fa-edit"></i></button>
-    <div id="editor-container" style="display: none;">
-        <textarea id="editor"></textarea>
-    </div>
+    <div> 
+        <button id="toggle-editor-btn" class="editor-button">
+            <svg class="svg-inline--fa fa-pen-to-square" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="pen-to-square" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+            <path fill="currentColor" d="M383.1 448H63.1V128h156.1l64-64H63.1C28.65 64 0 92.65 0 128v320c0 35.35 28.65 64 63.1 64h319.1c35.34 0 63.1-28.65 63.1-64l-.0039-220.1l-63.1 63.99V448zM497.9 42.19l-28.13-28.14c-18.75-18.75-49.14-18.75-67.88 0l-38.62 38.63l96.01 96.01l38.62-38.63C516.7 91.33 516.7 60.94 497.9 42.19zM147.3 274.4l-19.04 95.22c-1.678 8.396 5.725 15.8 14.12 14.12l95.23-19.04c4.646-.9297 8.912-3.213 12.26-6.562l186.8-186.8l-96.01-96.01L153.8 262.2C150.5 265.5 148.2 269.8 147.3 274.4z">
+            </path>
+        </svg><!-- <i class="fas fa-edit"></i> Font Awesome fontawesome.com --></button>
+    </div>    
 
     <a href="index.html"><button class="doc-link">COMO<br>JOGAR</button></a>
     
