@@ -1,6 +1,12 @@
+<<<<<<< Updated upstream
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+=======
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+>>>>>>> Stashed changes
 
 // Firebase setup (no import/export statements)
 const firebaseConfig = {
@@ -16,7 +22,10 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+<<<<<<< Updated upstream
 firebase.initializeApp(firebaseConfig);
+=======
+>>>>>>> Stashed changes
 
 // Function to show and hide popups
 window.openPopup = function(popupId) {
@@ -37,6 +46,7 @@ window.login = function() {
   const email = document.getElementById('login-email').value;
   const password = document.getElementById('login-password').value;
 
+<<<<<<< Updated upstream
   auth.signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
           const user = userCredential.user;
@@ -49,6 +59,30 @@ window.login = function() {
           alert(error.message);
       });
 }
+=======
+  signInWithEmailAndPassword(auth, email, password)
+    .then(async (userCredential) => {
+      const user = userCredential.user;
+      alert('Login realizado com sucesso!');
+      document.getElementById('user-name-display').innerText = user.displayName || "Usuário";
+      closePopup('login-popup');
+      openPopup('logout-popup');
+
+      // Após o login, carregar o conteúdo salvo
+      const docRef = doc(db, "users", user.uid);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        tinymce.get('editor').setContent(docSnap.data().content);
+      } else {
+        tinymce.get('editor').setContent('');
+      }
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+};
+
+>>>>>>> Stashed changes
 
 // Function to register the user
 window.register = function() {
