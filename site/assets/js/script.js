@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
+<<<<<<< Updated upstream
     // Example target codons for different sequences
+=======
+>>>>>>> Stashed changes
     const targetCodons = ['CGC', 'CCT', 'CGG', 'ATC', 'CGA', 'AAC', 'GCA', 'GGC', 'CAA'];
     const maxAttempts = 6;
     const codonLength = 3;
@@ -101,9 +104,15 @@ document.addEventListener('DOMContentLoaded', () => {
         attempts++;
 
         if (JSON.stringify(guess) === JSON.stringify(targetCodons)) {
+<<<<<<< Updated upstream
             message.textContent = 'Congratulations! You guessed the sequence correctly!';
         } else if (attempts === maxAttempts) {
             message.textContent = 'Game over! The correct codons were: ' + targetCodons.join(', ');
+=======
+            message.textContent = 'Parabéns! Você acertou a sequência!';
+        } else if (attempts === maxAttempts) {
+            message.textContent = 'Fim de jogo! Os codos corretos são: ' + targetCodons.join(', ');
+>>>>>>> Stashed changes
         }
     });
 });
