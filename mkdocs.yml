@@ -1,4 +1,4 @@
-site_name: Aquele nome lá 
+site_name: Sequenciamento do Genoma 
 theme:
   name: material
   language: pt-BR
@@ -35,11 +35,10 @@ markdown_extensions:
   - pymdownx.extra 
 
 nav:
-  - Jogo: '/intro.html'
+  - Jogo: 'game.html'
+  - Cartas: 'cards.html'
   - Sobre o projeto: index.md
-  - 1. Aqui:
-    - 1.1. Vão seus docs:
-      - 1.1.1. Organizados do jeito que quiser: CoisasdaBia.md
+  - 1. Erros Inatos do Metabolismo EIM: ErroInatoMetabolismoEIM.md
 
 extra_javascript:
   - https://cdn.tiny.cloud/1/2jt1cuik6ds2i08040n9c4c4igidhw9artwxbhb5q1m7e4bo/tinymce/5/tinymce.min.js  # TinyMCE script with API key
@@ -51,4 +50,7 @@ extra_javascript:
 
 extra_css:
   - assets/css/styles.css  # Custom CSS for the Wordle game
+
+extra:
+  generator: false
   
