@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to validate the guess
     function validateGuess(guess) {
         if (guess.length !== targetCodons.length || guess.some(codon => codon.length !== codonLength)) {
-            message.textContent = 'Please enter valid 3-letter codons in all boxes.';
+            message.textContent = 'Insira codons de 3 letras as celulas.';
             return false;
         }
         return true;
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!validateGuess(guess)) return;
 
         if (attempts >= maxAttempts) {
-            message.textContent = 'Game over! The correct codons were: ' + targetCodons.join(', ');
+            message.textContent = 'Game over! Os codos eram: ' + targetCodons.join(', ');
             return;
         }
 
