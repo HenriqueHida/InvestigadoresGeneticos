@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to validate the guess
     function validateGuess(guess) {
         if (guess.length !== targetCodons.length || guess.some(codon => codon.length !== codonLength)) {
-            message.textContent = 'Insira codons de 3 letras as celulas.';
+            message.textContent = 'Insira codons de 3 letras em todas as celulas.';
             return false;
         }
         return true;

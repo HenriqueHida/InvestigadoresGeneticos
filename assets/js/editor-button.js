@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const button = document.createElement('button');
     button.id = 'toggle-editor-btn';
     button.className = 'editor-button';
-    button.innerHTML = '<i class="fas fa-edit"></i>'; // Font Awesome edit icon
+    button.innerHTML = '<span>BLOCO<br>DE NOTAS</span>'; // Font Awesome edit icon
     document.body.appendChild(button);
 
     const editorContainer = document.createElement('div');

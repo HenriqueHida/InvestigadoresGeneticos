@@ -1,39 +1,44 @@
-#tituloSequenciamento{
+/* Estilos para Títulos */
+#tituloSequenciamento {
     font-size: 60px;
-    font-weight:bolder;
+    font-weight: bolder;
     font-family: 'IBM Plex Sans', sans-serif;
+    font-style: oblique;
     color: #FF4343;
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 0px;
+    margin: 20px 0 0 0;
 }
 
-#tituloDoGenoma{
-    font-size: 35px;
-    font-weight:normal;
-    font-family: 'IBM Plex Sans';
-    color: #868686;
+#tituloDoGenoma {
+    font-size: 55px;
+    font-weight: normal;
+    font-family: 'Brush Script MT', cursive;
+    font-style: oblique;
+    color: #ffffff;
     text-align: center;
-    margin-top: 0px;
-    margin-bottom: 30px;
-    padding-right: 140px;
+    margin: 0 0 60px 0;
 }
 
-#bodyJogo{
-    background-color: #ffe68bdb;
+/* Estilos Globais */
+#bodyJogo {
+    background-color: hsla(225, 15%, 14%, 1);
 }
 
 .center {
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center;     /* Center vertically */
-  }
+    justify-content: center;
+    align-items: center;
+}
 
-  
-/* Wordle Game Styles */
+.center-image {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Estilos do Jogo Wordle */
 .wordle-container {
     font-family: Arial, sans-serif;
-    background-color: var(--md-default-bg-color, #f8f9fa); /* Use CSS variable or fallback */
+    background-color: var(--md-default-bg-color, #f8f9fa);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,7 +53,7 @@
 
 #board {
     display: grid;
-    grid-template-columns: repeat(9, 60px); /* Increased size for the codon boxes */
+    grid-template-columns: repeat(9, 60px);
     gap: 10px;
     margin-bottom: 20px;
 }
@@ -56,14 +61,14 @@
 .cell {
     width: 60px;
     height: 60px;
-    border: 2px solid var(--md-accent-bg-color, #ccc); /* Use theme variable */
+    border: 2px solid var(--md-accent-bg-color, #ccc);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 24px;
     font-size: 24px;
     font-weight: bold;
-    background-color: var(--md-primary-bg-color, #fff); /* Use theme variable */
+    background-color: var(--md-primary-bg-color, #fff);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -78,7 +83,7 @@
 }
 
 .cell.absent {
-    background-color: gray;
+    background-color: rgb(139, 53, 53);
     color: white;
 }
 
@@ -94,55 +99,59 @@
     cursor: pointer;
 }
 
+/* Botão de Envio */
 #submit-button {
     padding: 11px 30px;
-    font-size: 23px;
-    font-weight: bold;
+    font-size: 28px;
+    font-weight: bolder;
     font-family: 'Jua', sans-serif;
     cursor: pointer;
-    background-color: #0C1FA9;
-    color: white;
+    background-color: #5e8bde;
+    color: #fff;
     border: none;
     border-radius: 45px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease;
 }
 
-#submit-button:hover {
+#submit-button:hover,
+#submit-button:focus {
     background-color: #0056b3;
 }
 
 #message {
     margin: 40px;
-    font-size: 18px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #ffffff;
 }
 
-/* TinyMCE Editor Button */
+/* Botão do Editor TinyMCE */
 .editor-button {
     position: fixed;
     bottom: 20px;
     left: 20px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+    padding: 11px 30px;
+    border-radius: 45px;
     background-color: #007bff;
     color: white;
-    border: none;
+    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    font-size: 22px;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
     transition: background-color 0.3s ease;
 }
 
-.editor-button:hover {
+.editor-button:hover,
+.editor-button:focus {
     background-color: #0056b3;
 }
 
-/* Documentation Link */
+/* Link para Documentação */
 .doc-link {
     position: fixed;
     bottom: 20px;
@@ -152,28 +161,26 @@
     font-weight: bold;
     font-family: 'Jua', sans-serif;
     cursor: pointer;
-    background-color: #0C1FA9;
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 45px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease;
 }
 
-.doc-link:hover {
+.doc-link:hover,
+.doc-link:focus {
     background-color: #0056b3;
 }
 
-
-/* Editor Container */
+/* Container do Editor */
 #editor-container {
     display: none;
     position: fixed;
     bottom: 90px;
     left: 20px;
     width: 300px;
-    background-color: white;
-    border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1001;
 }
@@ -188,10 +195,9 @@
     resize: none;
 }
 
-
-/* Estilo para os popups */
+/* Estilos dos Popups */
 .popup {
-    display: none; /* Escondido por padrão */
+    display: none;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -199,7 +205,7 @@
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro */
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .popup-content {
@@ -227,7 +233,7 @@
     cursor: pointer;
 }
 
-/* Estilo dos botões */
+/* Estilo dos Botões */
 button {
     padding: 10px 20px;
     margin-top: 10px;
@@ -239,24 +245,25 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+button:hover,
+button:focus {
     background-color: #45a049;
 }
 
-
-/* CSS PARA OS CARDS */
-
+/* CSS para os Cards */
 figure {
     display: grid;
     border-radius: 1rem;
     overflow: hidden;
     cursor: pointer;
-  }
-  figure > * {
+}
+
+figure > * {
     grid-area: 1/1;
     transition: .4s;
-  }
-  figure figcaption {
+}
+
+figure figcaption {
     display: grid;
     align-items: end;
     font-family: sans-serif;
@@ -264,33 +271,34 @@ figure {
     font-weight: bold;
     color: #0000;
     padding: .75rem;
-    background: var(--c,#0009);
-    clip-path: inset(0 var(--_i,100%) 0 0);
-    -webkit-mask:
-      linear-gradient(#000 0 0),
-      linear-gradient(#000 0 0);
+    background: var(--c, #0009);
+    clip-path: inset(0 var(--_i, 100%) 0 0);
+    -webkit-mask: linear-gradient(#000 0 0), linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     -webkit-mask-clip: text, padding-box;
     margin: -1px;
-  }
-  figure:hover figcaption{
+}
+
+figure:hover figcaption {
     --_i: 0%;
-  }
-  figure:hover img {
+}
+
+figure:hover img {
     transform: scale(1.2);
-  }
-  @supports not (-webkit-mask-clip: text) {
+}
+
+@supports not (-webkit-mask-clip: text) {
     figure figcaption {
-     -webkit-mask: none;
-     color: #fff;
+        -webkit-mask: none;
+        color: #fff;
     }
-  }
-  
-  .figbody {
+}
+
+.figbody {
     margin: 0;
     min-height: 100vh;
     display: grid;
     grid-auto-flow: column;
     place-content: center;
-    background: hsla(225deg,15%,14%,1);
-  }
+    background: hsla(225, 15%, 14%, 1);
+}
