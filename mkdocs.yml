@@ -1,4 +1,4 @@
-site_name: Sequenciamento do Genoma 
+site_name: Investigadores Geneticos
 theme:
   name: material
   language: pt-BR
@@ -35,7 +35,7 @@ markdown_extensions:
   - pymdownx.extra 
 
 nav:
-  - Jogo: 'game.html'
+  - Desafio Genetico: 'game.html'
   - Cartas: 'cards.html'
   - 1. Como jogar: index.md
   - 2. Erros Inatos do Metabolismo EIM: ErroInatoMetabolismoEIM.md
