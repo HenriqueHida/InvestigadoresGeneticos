@@ -40,6 +40,7 @@ nav:
   - 1. Como jogar: index.md
   - 2. Erros Inatos do Metabolismo EIM: ErroInatoMetabolismoEIM.md
   - 3. Tabela de Sintomas de MPS: tabela.md
+  - 4. MC MPS e seus tipos: mcmpsetipos.md
 
 extra_javascript:
   - https://cdn.tiny.cloud/1/2jt1cuik6ds2i08040n9c4c4igidhw9artwxbhb5q1m7e4bo/tinymce/5/tinymce.min.js  # TinyMCE script with API key

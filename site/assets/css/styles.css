@@ -1,22 +1,23 @@
 /* Estilos para Títulos */
-#tituloSequenciamento {
+#tituloGenetico {
     font-size: 60px;
     font-weight: bolder;
     font-family: 'IBM Plex Sans', sans-serif;
     font-style: oblique;
     color: #FF4343;
     text-align: center;
-    margin: 20px 0 0 0;
+    margin: 0 0 60px 0;
 }
 
-#tituloDoGenoma {
+#tituloDesafio {
     font-size: 55px;
+    padding-right: 190px;
     font-weight: normal;
     font-family: 'Brush Script MT', cursive;
     font-style: oblique;
     color: #ffffff;
     text-align: center;
-    margin: 0 0 60px 0;
+    margin: 20px 0 0 0;
 }
 
 /* Estilos Globais */
@@ -53,8 +54,8 @@
 
 #board {
     display: grid;
-    grid-template-columns: repeat(9, 60px);
-    gap: 10px;
+    grid-template-columns: repeat(3, 60px) 20px repeat(3, 60px) 20px repeat(3, 60px); /* Espaçamento maior após cada 3 células */
+    gap: 10px; /* Espaçamento entre células */
     margin-bottom: 20px;
 }
 
@@ -87,6 +88,16 @@
     color: white;
 }
 
+.cell.invalid {
+    background-color: grey;
+    color: white;
+}
+
+.cell.correspondent {
+    background-color: orange;
+    color: white;
+}
+
 .cell-input {
     border: none;
     width: 100%;
@@ -98,6 +109,7 @@
     background: transparent;
     cursor: pointer;
 }
+
 
 /* Botão de Envio */
 #submit-button {
@@ -117,6 +129,14 @@
 #submit-button:hover,
 #submit-button:focus {
     background-color: #0056b3;
+}
+
+#game-state { 
+    text-align: center;
+    margin: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #ffffff;
 }
 
 #message {
@@ -251,54 +271,70 @@ button:focus {
 }
 
 /* CSS para os Cards */
-figure {
-    display: grid;
-    border-radius: 1rem;
-    overflow: hidden;
+.gallery {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+    transition: filter 0.3s ease;
+}
+.gallery img {
+    width: 30%;
+    height: 90%;
+    object-fit: cover;
     cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.gallery img:hover {
+    transform: scale(1.1);
+}
+.info-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+.info-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+.close-btn-card {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 9px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    background-color: red;
 }
 
-figure > * {
-    grid-area: 1/1;
-    transition: .4s;
-}
 
-figure figcaption {
-    display: grid;
-    align-items: end;
-    font-family: sans-serif;
-    font-size: 2.3rem;
-    font-weight: bold;
-    color: #0000;
-    padding: .75rem;
-    background: var(--c, #0009);
-    clip-path: inset(0 var(--_i, 100%) 0 0);
-    -webkit-mask: linear-gradient(#000 0 0), linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    -webkit-mask-clip: text, padding-box;
-    margin: -1px;
-}
-
-figure:hover figcaption {
-    --_i: 0%;
-}
-
-figure:hover img {
-    transform: scale(1.2);
-}
-
-@supports not (-webkit-mask-clip: text) {
-    figure figcaption {
-        -webkit-mask: none;
-        color: #fff;
-    }
-}
-
-.figbody {
-    margin: 0;
-    min-height: 100vh;
-    display: grid;
-    grid-auto-flow: column;
-    place-content: center;
-    background: hsla(225, 15%, 14%, 1);
-}
+/* dropdown menu jogo */
+#genome-select {
+    background-color:  hsla(225, 15%, 14%, 1);
+    border: 1px solid #007bff;
+    color: #ffffff;
+    padding: 8px;
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+    float:inline-start;
+    transition: border-color 0.3s;
+  }
+  
+  #genome-select:focus {
+    border-color: #007bff;
+  }
+  

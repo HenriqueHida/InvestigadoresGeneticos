@@ -3,22 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimalist Card Gallery</title>
-    <script src="assets/js/editor-button.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <title>Cartas dos Pacientes</title>
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMW4MDHujbU4lW25P5sbBLqRoRz6Gz4L5tYfE9L" crossorigin="anonymous">
+    
+    <!-- Scripts -->
+    <script src="assets/js/firebase.js" type="module"></script>
+    <script src="https://cdn.tiny.cloud/1/2jt1cuik6ds2i08040n9c4c4igidhw9artwxbhb5q1m7e4bo/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/editor-button.js"></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+    </style>
 </head>
-<body class="figbody">
-    <figure>
-        <img src="https://picsum.photos/id/287/250/300" alt="Mountains">
-        <figcaption>Carta 1</figcaption>
-    </figure>
-    <figure style="--c:#fff5">
-        <img src="https://picsum.photos/id/475/250/300" alt="Mountains">
-        <figcaption>Carta 2</figcaption>
-    </figure>
+<body>
+    <div class="gallery">
+        <img src="/assets/images/img1card.jpg" alt="Image 1" data-info="image1">
+        <img src="/assets/images/img2card.jpg" alt="Image 2" data-info="image2">
+        <img src="/assets/images/img3card.jpg" alt="Image 3" data-info="image3">
+    </div>
+    <div class="info-overlay">
+        <div class="info-content"></div>
+        <span class="close-btn-card">&times;</span>
+    </div>
 
-    <a href="index.html"><button class="doc-link">COMO<br>JOGAR</button></a>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        const gallery = document.querySelector('.gallery');
+        const infoOverlay = document.querySelector('.info-overlay');
+        const infoContent = document.querySelector('.info-content');
+        const closeBtn = document.querySelector('.close-btn-card');
 
+        const imageInfo = {
+            image1: `
+# PACIENTE: OLIVER CASTRO
+
+**Idade:** 7 anos  
+**Diagnóstico:** Tipo 2 - forma grave (síndrome de Hunter)  
+**Físico:** 110 cm, um pouco gordinho, cerca de 32 kg. Ele apresenta bochechas cheias, lábios grossos, nariz grande e em formato de sela, testa saliente e olhos com olheiras inchadas. Mão em garra, uma cicatriz no abdômen referente à uma hérnia.
+
+## Sintomas Confirmados:
+- Otite frequente (dor, ouvido ‘apitando’, redução da audição, coceira e produção de muita cera)
+- Perda de audição
+- Articulações duras - pulso, joelho, ombro, cotovelo, quadril
+- Mãos de garra (dedos finos e alongados e ‘dobradinhos’)
+- Hiperatividade e agressividade (nota médica: em dias minimamente estressantes na escola, principalmente durante brincadeiras físicas, como jogos)
+- Baço e fígado inchados – hepatoesplenomegalia leve
+- Hérnia umbilical – tratada quando bebê
+- Hérnia incisional ou inguinal – há 1 ano e meio
+
+## Sintomas Investigáveis:
+- Formigamento e dor na palma da mão, pulso e antebraço (recorrente, principalmente na escola após escrever)
+- Fraqueza muscular inexplicada (*nota exame médico:* um exame físico relataria que o tônus muscular está reduzido, gerando menos resistência ao movimento passivo nos braços e tronco)
+- Fala reduzida/lenta (*nota médica/escolar:* o médico e professores repararam que o tempo de resposta é lento mesmo quando a criança está engajada na atividade. Parece que há um atraso no entendimento e execução de comandos simples, como pegar objetos ou em brincadeiras como “morto vivo, vivo morto”. Indica o sintoma: atraso no desenvolvimento)
+- Problemas na coluna – escoliose
+- Problemas respiratórios constantes (*nota médica:* principalmente sinusite e aparentemente existe uma relação entre a otite recorrente do paciente e as infecções respiratórias. O paciente normalmente transita de uma doença para a outra, nunca ficando 100% “curado” – segundo a mãe)
+- Problemas cardiovasculares nas válvulas mitral e pulmonar (*nota escolar:* fadiga excessiva mesmo quando não está doente. Já foi relatada uma dor na região do diafragma)
+- Língua maior que o comum e problemas na alimentação (*nota nutricional:* o paciente costuma comer mais pastosos, não costuma comer proteínas também)
+- Neurológico: perda progressiva da neuroaprendizagem
+
+## Teste do Pezinho:
+- Não realizado.
+
+## Informações Genéticas:
+- O avô apresenta a mesma MPS
+- A mãe não apresenta MPS
+
+## Exames Realizados:
+- Cardiovascular: tamanho aumentado e defeito na mitral
+- Esquelético: disostose múltipla: mãos em garra e escoliose
+- Neurológico: perda progressiva da neuroprogressão
+- Dentário: arcada dentária característica
+
+            `,
+            image2: `
+# PACIENTE: JOAQUIM FERNANDES
+
+**IDADE:** 28 ANOS  
+**DIAGNÓSTICO:** TIPO 6 - Forma moderada (Síndrome de Maroteaux-Lamy)
+
+## Físico
+
+- **Altura:** 1,66m  
+- **Peso:** 89kg  
+- **Descrição:** Um homem baixo com uma barriga bem saliente. Seus amigos brincam dizendo que ele está "grávido", atribuindo a barriga ao consumo de bebidas alcoólicas.  
+- **Braço esquerdo travado:** Rigidez no braço esquerdo, que perdeu mobilidade.  
+- **Face de depósito:** Características faciais típicas de MPS, incluindo infiltração na pele.  
+- **Mão em garra:** Restrição de movimentos nas mãos.  
+- **Dificuldade de enxergar:** Catarata precoce e opacidade bilateral da córnea.  
+
+## Sintomas Confirmados
+
+- **Hérnias:** Joaquim teve 5 hérnias ao longo da vida; 3 apareceram na infância e as outras surgiram durante a adolescência e vida adulta.  
+- **Rigidez muscular no braço esquerdo:** Joaquim perdeu basicamente toda a mobilidade do braço esquerdo, o que impactou seu trabalho na fazenda, resultando na contratação de seu primo Kleber como ajudante.  
+- **Face de depósito:** Infiltração cutânea no rosto, característica comum da MPS.  
+- **Opacidade bilateral da córnea:** Diagnóstico de catarata precoce.  
+- **Prisão de ventre:** Joaquim sempre teve problemas intestinais, frequentemente passava dias sem evacuar, e seus gases eram notórios, embora não tivesse problemas com alimentos.
+
+## Sintomas Investigáveis
+
+- **Atraso no crescimento:** Joaquim parou de crescer aos 12 anos e não teve o crescimento típico da adolescência.  
+- **Hiperatividade.**  
+- **Aumento do fígado e do baço:** A famosa "barriga de cerveja".  
+- **Extremo cansaço e dores musculares:** Principalmente perto das articulações, com restrição de movimento, indicando fraqueza muscular e possível artrite.  
+- **Perda auditiva:** Relata perda auditiva e produção excessiva de cera.  
+- **Infecções respiratórias frequentes:** Atualmente, apresenta um quadro de pneumonia moderada.  
+
+## Histórico Familiar
+
+- **Pais:** Os pais de Joaquim são primos diretos e não apresentam MPS.  
+- **Avós:** O avô de Joaquim e de Kleber têm MPS, mas a avó não.  
+
+## Exames Realizados
+
+- **Visão:** Opacidade bilateral da córnea.  
+- **Cardiovascular:** Defeito nas válvulas cardíacas.  
+- **Respiratório:** Obstrução das vias aéreas superiores e possível hipertensão pulmonar.
+
+            `,
+            image3: `
+# PACIENTE: LORENA CASTRO
+
+**Idade:** 30 anos  
+**Diagnóstico:** Tipo 1 - Forma atenuada (síndrome de Scheie)  
+**Físico:** Uma mulher relativamente magra e de altura normal (54 kg e 1,67 m), mas com o abdômen grande/uma “pochetinha”. Meio corcunda e com os braços longos. O rosto dela apresenta um leve inchaço, mas é mais aparente na boca e bochechas. Sua cabeça é relativamente grande pra ela. Ela usa óculos e apresenta diversas hérnias.
+
+## Sintomas Confirmados:
+- Cardiomiopatia hipertrófica
+- Baço e fígado inchados – hepatoesplenomegalia (o que reflete na sua barriga inchada)
+- Características faciais típicas de doenças lisossomais – face de ‘depósito’ (olhos inchados)
+- Hérnias inguinal e umbilical quando criança – duas cicatrizes quando criança.
+- Uma hérnia posterior quando adulta – uma cicatriz recente.
+- Urina frequentemente
+
+## Sintomas Investigáveis:
+- Tem apneia do sono (quando perguntada sobre o sono, a criança fala que a mamãe ronca muito)
+- Possível disostose múltipla: dedos curtos, coluna corcunda (indica deformidade na T3 e T4)
+- Atrite avançada injustificada – esse “diagnóstico” representa os seguintes sintomas: limitação da movimentação das mãos e pernas, dor e fadiga.
+- Problemas de visão (opacidade bilateral da córnea) (*nota médica:* afirma ter catarata precoce “é de família, que bom que só começou agora”)
+- Q tu - leve macrocefalia
+- Língua grande
+
+## Sintomas Gestacionais:
+(Sintomas sentidos pela mãe do paciente)
+- Infecção aguda - esteatose hepática aguda da gravidez (é uma infiltração de gordura no fígado, levando a disfunção hepática). Tal condição apresenta sintomas que podem sobrepor-se aos de alguns EIM, como vômitos, dor abdominal, icterícia, e encefalopatia. Isso pode levar a uma confusão diagnóstica inicial, onde os sintomas podem ser confundidos com intoxicações agudas ou crônicas observadas em EIM.
+
+## Exames Realizados:
+- Visão: Opacidade bilateral da córnea
+- Esquelético: Disostose múltipla = foi encontrado deformidades esqueléticas na T3 e T4 além de pequenas anomalias nas terminações de ossos longos, indicativo de agravamento da “artrite”
+- Respiratório: Obstrução das vias aéreas superiores = foi encontrado acúmulo de GAGS nos tecidos moles (língua, amígdalas e mucosa nasal). Essa obstrução justifica a apneia.
+
+            `
+        };
+
+        gallery.addEventListener('click', (e) => {
+            if (e.target.tagName === 'IMG') {
+                const imageId = e.target.dataset.info;
+                const markdownContent = imageInfo[imageId];
+                infoContent.innerHTML = marked.parse(markdownContent);
+                infoOverlay.style.display = 'flex';
+                gallery.style.filter = 'blur(5px)';
+            }
+        });
+
+        closeBtn.addEventListener('click', () => {
+            infoOverlay.style.display = 'none';
+            gallery.style.filter = 'none';
+        });
+        </script>
+        <a href="index.html"><button class="doc-link">COMO<br>JOGAR</button></a>
 </body>
+
 </html>
