@@ -39,8 +39,8 @@ nav:
   - Cartas: 'cards.html'
   - 1. Como jogar: index.md
   - 2. Erros Inatos do Metabolismo EIM: ErroInatoMetabolismoEIM.md
-  - 3. Tabela de Sintomas de MPS: tabela.md
-  - 4. MC MPS e seus tipos: mcmpsetipos.md
+  - 3. MC MPS e seus tipos: mcmpsetipos.md
+  - 4. Tabela de Sintomas de MPS: tabela.md
   - 5. Referências: referencia.md
 
 extra_javascript:

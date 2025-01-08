@@ -1,12 +1,12 @@
 # DOENÇA TRABALHADA NO JOGO
 
-Esse material tem como foco apresentar a mucopolissacaridose e seus tipos. Vamos falar de cada uma trazendo informações relevantes para o entendimento da doença e poderem trabalhar o quadro de sintomas e tipos.
+<p class="justificado">Esse material tem como foco apresentar a mucopolissacaridose e seus tipos. Vamos falar de cada uma trazendo informações relevantes para o entendimento da doença e poderem trabalhar o quadro de sintomas e tipos.</p>
 
 ## MUCOPOLISSACARIDOSE (MPS) DO TIPO 1, 2, 4 E 6
 
-As mucopolissacaridoses são doenças que afetam o depósito lisossômico, causando sintomas multissistêmicos e progressivos. As MPS são doenças hereditárias caracterizadas pela ausência ou defeito das enzimas necessárias para degradar as cadeias de hidratos de carbono denominadas glicosaminoglicanos (GAGs), previamente conhecidos como mucopolissacarídeos. Estas doenças levam à acumulação de GAGs dentro dos lisossomas celulares, resultando numa variedade de sintomas clínicos que as caracterizam. Dependendo de qual enzima está deficiente, pode-se classificá-las em mucopolissacaridose I, II, III, IV, VI, VII e IX. (Carvalho et al., 2021)
+<p class="justificado">As mucopolissacaridoses são doenças que afetam o depósito lisossômico, causando sintomas multissistêmicos e progressivos. As MPS são doenças hereditárias caracterizadas pela ausência ou defeito das enzimas necessárias para degradar as cadeias de hidratos de carbono denominadas glicosaminoglicanos (GAGs), previamente conhecidos como mucopolissacarídeos. Estas doenças levam à acumulação de GAGs dentro dos lisossomas celulares, resultando numa variedade de sintomas clínicos que as caracterizam. Dependendo de qual enzima está deficiente, pode-se classificá-las em mucopolissacaridose I, II, III, IV, VI, VII e IX. (Carvalho et al., 2021)</p>
 
-A maioria dos afetados por essa doença parece saudável ao nascimento, mas a função física e/ou mental deteriora à medida que a acumulação progride. Com a progressão da doença, podem ser afetados vários sistemas distintos do corpo. O diagnóstico pode ser feito pela medição das concentrações de GAG na urina e através de ensaios enzimáticos para identificar a deficiência enzimática. O tratamento depende da doença específica, do grau de acumulação de GAG e do grau de deformidade.
+<p class="justificado">A maioria dos afetados por essa doença parece saudável ao nascimento, mas a função física e/ou mental deteriora à medida que a acumulação progride. Com a progressão da doença, podem ser afetados vários sistemas distintos do corpo. O diagnóstico pode ser feito pela medição das concentrações de GAG na urina e através de ensaios enzimáticos para identificar a deficiência enzimática. O tratamento depende da doença específica, do grau de acumulação de GAG e do grau de deformidade.</p>
 
 ## CLASSIFICAÇÃO
 
@@ -48,7 +48,7 @@ Os GAGs estão presentes em vários tecidos, como ossos, cartilagem, tendões, l
 
 ## APRESENTAÇÃO CLÍNICA
 
-Pessoas com essa doença geralmente não apresentam sintomas ao nascimento, mas a progressão da doença varia com a idade. As características clínicas variam de acordo com o tipo de MPS.
+<p class="justificado">Pessoas com essa doença geralmente não apresentam sintomas ao nascimento, mas a progressão da doença varia com a idade. As características clínicas variam de acordo com o tipo de MPS.</p>
 
 ### MPS I
 
